@@ -37,7 +37,7 @@ public class CustomerServiceImpl implements CustomerService {
 	public void register(Customer customer) {
 		//Save the customer in database
 		customerRepository2.save(customer);
-		adminServiceImpl.addCustomer(customer);
+		//adminServiceImpl.addCustomer(customer);
 	}
 
 	@Override
@@ -45,7 +45,7 @@ public class CustomerServiceImpl implements CustomerService {
 		// Delete customer without using deleteById function
 		Customer customer = customerRepository2.findById(customerId).get();
 		customerRepository2.delete(customer);
-		adminServiceImpl.deleteCustomer(customer);
+		//adminServiceImpl.deleteCustomer(customer);
 	}
 
 	@Override
@@ -82,7 +82,7 @@ public class CustomerServiceImpl implements CustomerService {
 			}
 		}
 
-		throw new Exception("No cab available!");
+		return null;
 
 
 	}
@@ -93,6 +93,7 @@ public class CustomerServiceImpl implements CustomerService {
 		TripBooking cancelledTrip = tripBookingRepository2.findById(tripId).get();
 
 		cancelledTrip.setStatus(TripStatus.CANCELED);
+		tripBookingRepository2.save(cancelledTrip);
 		/* Customer customer = cancelledTrip.getCustomer();
 
 		List<TripBooking> tripBookingList = customer.getTripBookingList();
@@ -114,6 +115,7 @@ public class CustomerServiceImpl implements CustomerService {
 		//Complete the trip having given trip Id and update TripBooking attributes accordingly
 		TripBooking completedTrip = tripBookingRepository2.findById(tripId).get();
 
+
 		/*Customer customer = completedTrip.getCustomer();
 
 		List<TripBooking> tripBookingList = customer.getTripBookingList();
@@ -130,5 +132,6 @@ public class CustomerServiceImpl implements CustomerService {
 		tripBookingRepository2.deleteById(tripId);*/
 
 		completedTrip.setStatus(TripStatus.COMPLETED);
+		tripBookingRepository2.save(completedTrip);
 	}
 }

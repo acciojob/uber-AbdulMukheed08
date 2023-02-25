@@ -35,7 +35,7 @@ public class DriverServiceImpl implements DriverService {
 		driver.setCab(cab);
 
 		driverRepository3.save(driver);
-		adminServiceImpl.addDriver(driver);
+		//adminServiceImpl.addDriver(driver);
 	}
 
 	@Override
@@ -43,7 +43,7 @@ public class DriverServiceImpl implements DriverService {
 		// Delete driver without using deleteById function
 		Driver driver = driverRepository3.findById(driverId).get();
 		driverRepository3.delete(driver);
-		adminServiceImpl.deleteDriver(driver);
+		//adminServiceImpl.deleteDriver(driver);
 	}
 
 	@Override
