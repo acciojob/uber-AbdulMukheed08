@@ -18,6 +18,9 @@ public class DriverServiceImpl implements DriverService {
 	@Autowired
 	CabRepository cabRepository3;
 
+	@Autowired
+	AdminServiceImpl adminServiceImpl;
+
 	@Override
 	public void register(String mobile, String password){
 		//Save a driver in the database having given details and a cab with ratePerKm as 10 and availability as True by default.
@@ -32,6 +35,7 @@ public class DriverServiceImpl implements DriverService {
 		driver.setCab(cab);
 
 		driverRepository3.save(driver);
+		adminServiceImpl.addDriver(driver);
 	}
 
 	@Override
@@ -39,6 +43,7 @@ public class DriverServiceImpl implements DriverService {
 		// Delete driver without using deleteById function
 		Driver driver = driverRepository3.findById(driverId).get();
 		driverRepository3.delete(driver);
+		adminServiceImpl.deleteDriver(driver);
 	}
 
 	@Override

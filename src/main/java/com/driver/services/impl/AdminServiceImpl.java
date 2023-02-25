@@ -26,6 +26,9 @@ public class AdminServiceImpl implements AdminService {
 	@Autowired
 	CustomerRepository customerRepository1;
 
+	private List<Driver> listOfDrivers = new ArrayList<>();
+	private List<Customer> listOfCustomers = new ArrayList<>();
+
 	@Override
 	public void adminRegister(Admin admin) {
 		//Save the admin in the database
@@ -54,17 +57,39 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public List<Driver> getListOfDrivers() {
 		//Find the list of all drivers
-		List<Driver> listOfDrivers = new ArrayList<>();
-		listOfDrivers = driverRepository1.findAll();
 		return listOfDrivers;
+	}
+	public void addDriver(Driver driver){
+		listOfDrivers.add(driver);
+	}
+	public void deleteDriver(Driver driver){
+		for(int i=0;i<listOfDrivers.size();i++){
+			Driver currDriver = listOfDrivers.get(i);
+			if(currDriver.equals(driver)){
+				listOfDrivers.remove(i);
+				break;
+			}
+		}
 	}
 
 	@Override
 	public List<Customer> getListOfCustomers() {
 		//Find the list of all customers
-		List<Customer> listOfCustomers = new ArrayList<>();
-		listOfCustomers = customerRepository1.findAll();
 		return listOfCustomers;
+	}
+
+	public void addCustomer(Customer customer){
+		listOfCustomers.add(customer);
+	}
+
+	public void deleteCustomer(Customer customer){
+		for(int i=0;i<listOfCustomers.size();i++){
+			Customer currCustomer = listOfCustomers.get(i);
+			if(currCustomer.equals(customer)){
+				listOfCustomers.remove(i);
+				break;
+			}
+		}
 	}
 
 }

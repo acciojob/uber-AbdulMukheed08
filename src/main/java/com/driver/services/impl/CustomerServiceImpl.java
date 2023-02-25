@@ -30,10 +30,14 @@ public class CustomerServiceImpl implements CustomerService {
 	@Autowired
 	DriverServiceImpl driverServiceImpl;
 
+	@Autowired
+	AdminServiceImpl getAdminServiceImpl;
+
 	@Override
 	public void register(Customer customer) {
 		//Save the customer in database
 		customerRepository2.save(customer);
+		adminServiceImpl.addCustomer(customer);
 	}
 
 	@Override
@@ -41,6 +45,7 @@ public class CustomerServiceImpl implements CustomerService {
 		// Delete customer without using deleteById function
 		Customer customer = customerRepository2.findById(customerId).get();
 		customerRepository2.delete(customer);
+		adminServiceImpl.deleteCustomer(customer);
 	}
 
 	@Override
