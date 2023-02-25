@@ -53,7 +53,7 @@ public class CustomerServiceImpl implements CustomerService {
 			Driver driver = listOfDrivers.get(i);
 			Cab cab = driver.getCab();
 
-			if(cab.isAvailable()){
+			if(cab.getAvailable()){
 				List<TripBooking> tripBookingList = new ArrayList<>();
 
 				Customer customer = customerRepository2.findById(customerId).get();
@@ -67,6 +67,7 @@ public class CustomerServiceImpl implements CustomerService {
 				bookedTrip.setDistanceInKm(distanceInKm);
 				bookedTrip.setStatus(TripStatus.CONFIRMED);
 				bookedTrip.setCustomer(customer);
+				bookedTrip.setDriver(driver);
 
 				tripBookingRepository2.save(bookedTrip);
 				driverServiceImpl.updateStatus(driver.getDriverId());
