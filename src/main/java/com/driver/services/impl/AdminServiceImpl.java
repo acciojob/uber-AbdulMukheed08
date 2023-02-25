@@ -57,7 +57,7 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public List<Driver> getListOfDrivers() {
 		//Find the list of all drivers
-		return listOfDrivers = driverRepository1.findAll();
+		return driverRepository1.findAll();
 	}
 	/*public void addDriver(Driver driver){
 		listOfDrivers.add(driver);
@@ -75,10 +75,11 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public List<Customer> getListOfCustomers() {
 		//Find the list of all customers
-		return listOfCustomers = customerRepository1.findAll();;
+		listOfCustomers = customerRepository1.findAll();;
+		return listOfCustomers;
 	}
 
-	public void addCustomer(Customer customer){
+	/*public void addCustomer(Customer customer){
 		listOfCustomers.add(customer);
 	}
 
@@ -89,8 +90,8 @@ public class AdminServiceImpl implements AdminService {
 				listOfCustomers.remove(i);
 				break;
 			}
-		}*/
+		}
 		//listOfCustomers = customerRepository1.findAll();
-	}
+	}*/
 
 }
