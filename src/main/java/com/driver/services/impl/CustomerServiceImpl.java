@@ -73,6 +73,7 @@ public class CustomerServiceImpl implements CustomerService {
 				bookedTrip.setStatus(TripStatus.CONFIRMED);
 				bookedTrip.setCustomer(customer);
 				bookedTrip.setDriver(driver);
+				bookedTrip.setBill(distanceInKm*10);
 
 				tripBookingList.add(bookedTrip);
 				customer.setTripBookingList(tripBookingList);
@@ -112,9 +113,11 @@ public class CustomerServiceImpl implements CustomerService {
 				tripBookingList.set(i,cancelledTrip);
 			}
 		}
-		customerRepository2.save(customer);
 
-		tripBookingRepository2.deleteById(tripId);
+		customerRepository2.save(customer);
+		cancelledTrip.setBill(0);
+
+		tripBookingRepository2.save(cancelledTrip);
 	}
 
 	@Override
