@@ -114,8 +114,8 @@ public class CustomerServiceImpl implements CustomerService {
 			}
 		}
 
-		customerRepository2.save(customer);
-		cancelledTrip.setBill(0);*/
+		customerRepository2.save(customer);*/
+		cancelledTrip.setBill(0);
 
 		tripBookingRepository2.save(cancelledTrip);
 	}
