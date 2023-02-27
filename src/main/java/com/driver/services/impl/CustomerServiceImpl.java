@@ -101,7 +101,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 		cancelledTrip.setStatus(TripStatus.CANCELED);
 		//tripBookingRepository2.save(cancelledTrip);
-		 Customer customer = cancelledTrip.getCustomer();
+		 /*Customer customer = cancelledTrip.getCustomer();
 
 		List<TripBooking> tripBookingList = customer.getTripBookingList();
 
@@ -115,7 +115,7 @@ public class CustomerServiceImpl implements CustomerService {
 		}
 
 		customerRepository2.save(customer);
-		cancelledTrip.setBill(0);
+		cancelledTrip.setBill(0);*/
 
 		tripBookingRepository2.save(cancelledTrip);
 	}
